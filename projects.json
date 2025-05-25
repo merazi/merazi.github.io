@@ -3,6 +3,7 @@
         "title": "Ticklo",
         "description": "A simple pomodoro timer build with web technologies.",
         "url": "https://merazi.github.io/Ticklo/",
-        "icon": "https://merazi.github.io/Ticklo/img/logo_light.png"
+        "icon": "https://merazi.github.io/Ticklo/img/logo_light.png",
+        "source": "https://github.com/merazi/Ticklo"
     }
 ]

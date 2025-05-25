@@ -61,3 +61,5 @@ if [ -f "./generate_posts_json.sh" ]; then
 else
     echo "⚠️  Warning: generate_posts_json.sh not found. Skipping JSON update."
 fi
+
+code $FILE_PATH

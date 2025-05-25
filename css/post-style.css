@@ -64,6 +64,20 @@ nav a:hover {
     animation: fadeIn 0.6s ease-out forwards;
 }
 
+.code {
+    display: block;
+    background: #23272e;
+    color: #f8f8f2;
+    font-family: 'Fira Mono', 'Consolas', 'Monaco', monospace;
+    font-size: 1em;
+    padding: 1em 1.2em;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1.5em 0;
+    line-height: 1.5;
+    box-shadow: 0 2px 8px rgba(35, 39, 46, 0.08);
+}
+
 @keyframes fadeIn {
     to {
         opacity: 1;
