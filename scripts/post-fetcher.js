@@ -7,7 +7,7 @@ fetch('posts.json')
             div.className = 'post fade-in';
             div.innerHTML = `
                     <h2>${post.title}</h2>
-                    <p><a href="${post.file}" >Read more</a></p>
+                    <p><a href="${post.file}" >Read Blog Post</a></p>
                 `;
             container.appendChild(div);
             observer.observe(div); // apply fade-in
