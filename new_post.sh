@@ -3,6 +3,7 @@
 # Prompt for filename and title
 read -p "Enter a short name for the post (e.g. my-first-post): " raw_filename
 read -p "Enter post title: " title
+read -p "Enter picture URL (optional, press Enter to skip): " picture
 
 # Get current date
 DATE=$(date +"%Y-%m-%d")
@@ -27,6 +28,8 @@ cat > "$FILE_PATH" <<EOF
 </head>
 
 <body>
+
+    <img class="post-picture" src="$picture" alt="hidden image" style="display:none;">
 
     <nav>
         <a href="../index.html" style="text-decoration:none;color:#3498db;font-weight:bold;">&larr; Back to Home</a>

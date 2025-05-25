@@ -22,10 +22,14 @@ for file in "$POSTS_DIR"/*.html; do
         echo "," >> "$OUTPUT_FILE"
     fi
 
+    # Extract the src from the <img class="post-picture" src="...">
+    picture=$(grep -oP '<img[^>]+class="post-picture"[^>]+src="\K[^"]+' "$file" | head -n1)
+
     # Write the JSON object
     echo "    {" >> "$OUTPUT_FILE"
     echo "        \"title\": \"$title\"," >> "$OUTPUT_FILE"
-    echo "        \"file\": \"$file\"" >> "$OUTPUT_FILE"
+    echo "        \"file\": \"$file\"," >> "$OUTPUT_FILE"
+    echo "        \"picture\": \"$picture\"" >> "$OUTPUT_FILE"
     echo -n "    }" >> "$OUTPUT_FILE"
 done
 

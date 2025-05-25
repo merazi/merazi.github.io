@@ -1,6 +1,12 @@
 [
     {
-        "title": "This is my first post!",
-        "file": "posts/2025-05-25-my-first-post.html"
+        "title": "LMAO",
+        "file": "posts/2025-05-25-ANOTHER TEST.html",
+        "picture": "https://hix.ai/images/aiCollectionProd/static/bot/images/peppa-pig-scripting.png"
+    },
+    {
+        "title": "TESTING MY SCRIPTS LOL",
+        "file": "posts/2025-05-25-This is a test.html",
+        "picture": "https://zerotrustoffsec.com/assets/img/blog/web/cross_site_scripting/portada.png"
     }
 ]
