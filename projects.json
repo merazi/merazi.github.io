@@ -5,5 +5,12 @@
         "url": "https://merazi.github.io/Ticklo/",
         "icon": "https://merazi.github.io/Ticklo/img/logo_light.png",
         "source": "https://github.com/merazi/Ticklo"
+    },
+    {
+        "title": "SimplyQR",
+        "description": "A simple QR code generator.",
+        "url": "https://merazi.github.io/SimplyQR/",
+        "icon": "https://merazi.github.io/img/favicon-light.png",
+        "source": "https://github.com/merazi/SimplyQR"
     }
 ]
