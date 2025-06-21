@@ -12,5 +12,12 @@
         "url": "https://merazi.github.io/SimplyQR/",
         "icon": "https://merazi.github.io/SimplyQR/img/favicon-light.png",
         "source": "https://github.com/merazi/SimplyQR"
+    },
+    {
+        "title": "Tic-Tac-Toe",
+        "description": "A simple 2 player game of tic-tac-toe.",
+        "url": "https://merazi.github.io/tic-tac-toe/",
+        "icon": "https://merazi.github.io/tic-tac-toe/favicon.ico",
+        "source": "https://github.com/merazi/tic-tac-toe"
     }
 ]
