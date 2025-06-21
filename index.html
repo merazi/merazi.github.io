@@ -6,31 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Merazi's Blog</title>
 
-    <link rel="stylesheet" href="css/main-style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <script src="scripts/animation.js"></script>
     <script src="scripts/post-fetcher.js"></script>
     <script src="scripts/project-fetcher.js"></script>
+
+    <meta name="description"
+        content="Merazi's Blog - Sharing thoughts, tutorials, and projects on web development, programming, and technology." />
+    <meta name="keywords" content="Merazi, blog, web development, programming, technology, tutorials, projects" />
+    <meta name="author" content="Merazi" />
+    <meta property="og:title" content="Merazi's Blog" />
+    <meta property="og:description"
+        content="Just sharing my thoughts with the world! Read about web development, programming, and more." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://merazi.github.io/" />
+    <meta property="og:image" content="https://github.com/merazi.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Merazi's Blog" />
+    <meta name="twitter:description"
+        content="Just sharing my thoughts with the world! Read about web development, programming, and more." />
+    <meta name="twitter:image" content="https://github.com/merazi.png" />
+
 
     <link rel="icon" type="image/png"
         href="https://images.emojiterra.com/google/noto-emoji/unicode-15/color/512px/1f468-1f4bb.png" />
 
 </head>
 
-<body>
-    <header>
-        <img src="https://github.com/merazi.png" alt="Profile picture" style="height:80px; border-radius:50%;" />
-        <h1>Merazi's Blog</h1>
-        <p>Just sharing my thoughts with the world!</p>
+<body class="bg-gray-100 text-gray-900 font-sans">
+    <header class="flex flex-col items-center py-8 bg-white shadow-md mb-8">
+        <img src="https://github.com/merazi.png" alt="Profile picture" class="h-20 w-20 rounded-full mb-4 shadow" />
+        <h1 class="text-3xl font-bold mb-2">Merazi's Blog</h1>
+        <p class="text-lg text-gray-600">Just sharing my thoughts with the world!</p>
     </header>
 
-    <div class="main-content">
-        <div class="container">
+    <div class="main-content flex flex-col md:flex-row max-w-5xl mx-auto px-4 gap-8">
+        <div class="container flex-1">
+            <h2 class="text-2xl font-semibold mb-4">Blog Posts 📜</h2>
+            <div class="post bg-white rounded-lg shadow p-6 mb-8"></div>
         </div>
 
-        <div class="projects">
-            <aside class="sidebar">
-            </aside>
+        <div class="projects w-full md:w-1/3">
+            <h2 class="text-2xl font-semibold mb-4 flex items-center gap-2">Projects 💼</h2>
+            <aside class="sidebar bg-white rounded-lg shadow p-6"></aside>
         </div>
     </div>
 </body>
