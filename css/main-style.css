@@ -1,105 +1,42 @@
-/* Keep the body styling without flex */
-body {
-    background: #f5f7fa;
-    color: #333;
-    line-height: 1.6;
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+/* Dark theme support overrides */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #181a1b;
+    color: #e0e0e0;
+  }
 
-/* Flex layout only on main-content */
-.main-content {
-    display: flex;
-    gap: 30px;
-}
+  .container,
+  .sidebar {
+    background-color: #23272a;
+    color: #e0e0e0;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+  }
 
-/* container and sidebar styles stay the same */
-.container {
-    flex: 3;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-}
+  header {
+    border-bottom-color: #357ABD;
+  }
 
-.sidebar {
-    flex: 1;
-    max-width: 300px;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-}
+  header h1 {
+    color: #6cb6ff;
+  }
 
-/* Header styles stay as before */
-header {
-    text-align: center;
-    margin-bottom: 30px;
-    padding-bottom: 15px;
-    border-bottom: 2px solid #4a90e2;
-}
+  header p {
+    color: #b0b0b0;
+  }
 
-header h1 {
-    color: #4a90e2;
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-}
+  .about-project {
+    background: #357ABD;
+    color: #fff;
+  }
 
-header p {
-    font-size: 1.2rem;
-    color: #666;
-    font-style: italic;
-}
+  .project-link {
+    background-color: #23272a;
+    color: #6cb6ff;
+  }
 
-/* Sidebar .about-project styling stays the same */
-.sidebar .about-project {
-    background: #4a90e2;
-    color: white;
-    padding: 15px 20px;
-    border-radius: 6px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-}
-
-.sidebar .about-project h3 {
-    margin-bottom: 10px;
-    font-weight: 700;
-    font-size: 1.4rem;
-}
-
-.sidebar .about-project p {
-    font-size: 1rem;
-    margin-bottom: 15px;
-    line-height: 1.4;
-}
-
-.project-link {
-    display: inline-block;
-    text-decoration: none;
-    background-color: white;
-    color: #4a90e2;
-    padding: 10px 15px;
-    border-radius: 4px;
-    font-weight: 600;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.project-link:hover,
-.project-link:focus {
-    background-color: #357ABD;
-    color: white;
-    outline: none;
-}
-
-/* Responsive: stack sidebar below container on smaller screens */
-@media (max-width: 768px) {
-    .main-content {
-        flex-direction: column;
-    }
-
-    .sidebar {
-        max-width: 100%;
-        margin-top: 20px;
-    }
+  .project-link:hover,
+  .project-link:focus {
+    background-color: #6cb6ff;
+    color: #23272a;
+  }
 }
