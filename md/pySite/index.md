@@ -13,10 +13,10 @@ You just get it from my github: https://github.com/merazi/pysite and follwo the 
 
 Then generate your website with these simple steps:
 
-Step 1: Create your config.json file.
-Step 2: pysite new new-post
-Step 3: pysite build
-Step 4: Profit
+- Step 1: Create your config.json file.
+- Step 2: pysite new new-post
+- Step 3: pysite build
+- Step 4: Profit
 
 You can host it in something like Github pages, just keep in mind the directory you want to publish is the one that says "public_dir" in the config.json file.
 
