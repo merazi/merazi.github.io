@@ -3,11 +3,21 @@
 
 **Date:** 2025-12-20
 
-This is the content for your new article, 'pySite'. 
+I remade my website! (Again...)
 
-Start writing your awesome content here! You can include assets in the accompanying `files` folder.
+But this time I built the static website generator myself, with Python.
 
-## Sub-heading Example
+It's called "Pysite", and it's very easy to use.
 
-* List item 1
-* List item 2
+You just get it from my github: https://github.com/merazi/pysite and follwo the instructions.
+
+Then generate your website with these simple steps:
+
+Step 1: Create your config.json file.
+Step 2: pysite new new-post
+Step 3: pysite build
+Step 4: Profit
+
+You can host it in something like Github pages, just keep in mind the directory you want to publish is the one that says "public_dir" in the config.json file.
+
+Have fun! 🍎
