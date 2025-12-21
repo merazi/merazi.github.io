@@ -1,7 +1,9 @@
+---
+title: PySite static website generator
+date: 2025-12-20
+---
 
 # Pysite
-
-**Date:** 2025-12-20
 
 I remade my website! (Again...)
 
@@ -9,7 +11,7 @@ But this time I built the static website generator myself, with Python.
 
 It's called "Pysite", and it's very easy to use.
 
-You just get it from my github: https://github.com/merazi/pysite and follwo the instructions.
+You just get it from my github: https://github.com/merazi/pysite and follow the instructions.
 
 Then generate your website with these simple steps:
 

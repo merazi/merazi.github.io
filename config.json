@@ -4,5 +4,9 @@
     "public_dir": "public",
     "post_filename": "index.md",
     "assets_dir": "files",
-    "default_editor": "vim"
+    "default_editor": "vim",
+    "socials": {
+	"GitHub": "https://github.com/merazi",
+	"BlueSky": "https://bsky.app/profile/meraz1.bsky.social"
+    }
 }
