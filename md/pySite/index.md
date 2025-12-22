@@ -11,7 +11,7 @@ But this time I built the static website generator myself, with Python.
 
 It's called "Pysite", and it's very easy to use.
 
-You just get it from my github: https://github.com/merazi/pysite and follow the instructions.
+You just get it from my github: https://github.com/merazi/blogcraft and follow the instructions.
 
 Then generate your website with these simple steps:
 
