@@ -1,5 +1,6 @@
 {
     "site_title": "Merazi's blog",
+    "site_subtitle": "My corner of the internet",
     "md_dir": "md",
     "public_dir": "public",
     "post_filename": "index.md",
