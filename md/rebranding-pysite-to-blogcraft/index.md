@@ -1,16 +1,24 @@
 ---
-title: Rebranding Pysite To Blogcraft
+title: New Name, Same Great Tool: PySite is Now BlogCraft!
 date: 2025-12-21
 ---
 
-Hello everyone! Just a quick announcement:
+Hey everyone, exciting news!
 
-My **PySite** static website generator has been rebranded to "blogcraft".
+I'm thrilled to announce that **PySite**, my trusty static site generator, is getting a new name: **BlogCraft**.
 
-The reason of the change is to avoid confusion with another python package also named "pysite": https://pypi.org/project/pysite/
+### Why the New Name?
 
-This change has been applied to the git repository already, making sure the documentation is also updated... If any of you finds any instances of "pysite" in my code or documentation is most likely because I missed it, please send a PR.
+It came to my attention that another Python package shares the name `pysite`. To avoid any confusion and give this project a more distinct identity, I decided a rebrand was the way to go. I feel "BlogCraft" better captures the spirit of the tool—crafting simple, beautiful blogs with ease.
 
-Hope this tool is as useful to you as it is to me, also added some small quality of life improvements.
+### What Does This Mean for You?
+
+The git repository and all the documentation have been updated with the new name. The core functionality of the tool remains exactly the same.
+
+If you happen to stumble upon any lingering references to "PySite" in the code or docs, I'd be very grateful if you could open a pull request. Your contributions help make BlogCraft better for everyone!
+
+I've also bundled in a few quality-of-life improvements to make your experience even smoother.
+
+Hope you enjoy the changes.
 
 Happy hacking! 🍎

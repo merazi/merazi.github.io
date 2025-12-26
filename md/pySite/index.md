@@ -3,23 +3,32 @@ title: PySite static website generator
 date: 2025-12-20
 ---
 
-# Pysite
+# I Built My Own Site Generator with Python
 
-I remade my website! (Again...)
+So, I did it again... I rebuilt my entire website.
 
-But this time I built the static website generator myself, with Python.
+But this time feels different. Why? Because I built the static site generator myself, completely from scratch, using Python.
 
-It's called "Pysite", and it's very easy to use.
+Say hello to **Pysite**.
 
-You just get it from my github: https://github.com/merazi/blogcraft and follow the instructions.
+I made it to be super simple and straightforward. No crazy dependencies, no complicated setup. Just the basics to get a blog or a simple site up and running fast.
 
-Then generate your website with these simple steps:
+If you wanna check it out, you can grab it from my GitHub:
+[https://github.com/merazi/blogcraft](https://github.com/merazi/blogcraft)
 
-- Step 1: Create your config.json file.
-- Step 2: pysite new new-post
-- Step 3: pysite build
-- Step 4: Profit
+Getting your own site running is a piece of cake. Seriously, it's pretty much this:
 
-You can host it in something like Github pages, just keep in mind the directory you want to publish is the one that says "public_dir" in the config.json file.
+1.  Create your `config.json` file to set things up.
+2.  Pop open your terminal and create a new post:
+    ```bash
+    pysite new new-post
+    ```
+3.  Build the site:
+    ```bash
+    pysite build
+    ```
+4.  Profit. 😎
 
-Have fun! 🍎
+**Pro-tip for hosting:** If you're using something like GitHub Pages, just point it to the output directory. You can set this in your `config.json` with the `public_dir` option.
+
+That's it! Go have some fun with it. 🍎
