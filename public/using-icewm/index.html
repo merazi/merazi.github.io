@@ -1,0 +1,93 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Switching to the ICEWM window manager | Merazi's blog</title>
+    <link rel="stylesheet" href="/code_highlight.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+</head>
+<body>
+    <main class="container">
+        <header>
+            <hgroup>
+                <h1><a href="/" style="text-decoration: none; color: inherit;">Merazi's blog</a></h1>
+                <p>My corner of the internet</p>
+            </hgroup>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li style="padding: 0 0.5rem; color: var(--pico-muted-color); border: none;" aria-hidden="true">|</li>
+                    <li><a href="https://github.com/merazi" target="_blank">GitHub</a></li>
+<li><a href="https://bsky.app/profile/meraz1.bsky.social" target="_blank">BlueSky</a></li>
+ 
+                </ul>
+            </nav>
+        </header>
+        
+<article>
+    <p>I just wanted to write a quick blog on how I switched from XFCE4 to ICEWM.</p>
+<p>Quick disclaimer, I do not dislike XFCE4 or anything like that, I just wanted to try something else.</p>
+<p>I've used ICEWM in the past, however I never considered using it "seriously".</p>
+<p>I hopped into the arch wiki and checked what was needed to be up and running with ICEWM, first I installed the package icewm from the archlinux official repos.</p>
+<p>I also installed icewm-extra-themes from the AUR so I could get more theme options.</p>
+<p>Once those two packages were installed, I uninstalled the xfce4 group entirely, as well as lightdm using these commands:</p>
+<pre class="codehilite"><code class="language-sh">sudo pacman -Rncs xfce4
+systemctl disable lightdm
+systemctl stop lightdm
+sudo pacman -Rncs lightdm
+</code></pre>
+
+<p>After that I rebooted and made sure I installed the <code>xorg-xinit</code> so I could use startx.</p>
+<h2>ICEWM Session and startup apps</h2>
+<p>In order to have support for startup apps I did this in the <code>~/.xinitrc</code>:</p>
+<pre class="codehilite"><code class="language-sh">exec icewm-session
+</code></pre>
+
+<p>I'm doing icewm-session instead of just icewm so I can later use the startup script mentioned in their docs: (https://ice-wm.org/man/icewm-startup.html)[https://ice-wm.org/man/icewm-startup.html].</p>
+<p>Then in that startup file I have everything else, it's just a regular bash script:</p>
+<pre class="codehilite"><code class="language-sh">#!/bin/bash
+
+# start network manager
+nm-applet &amp;
+
+# start bluetooth manager
+blueman-applet &amp;
+
+# enable notifications
+dunst &amp;
+
+# run conky system monitor
+sleep 1 &amp;&amp;
+        conky -c ~/.config/conky-date-widget &amp;
+
+# configuration for xter
+xrdb -load ~/.Xresources
+
+# set my wallpaper
+icewmbg --center=1 -i ~/Pictures/1071432.png
+
+# sticky notes support
+xpad &amp;
+
+# enable compositing
+xcompmgr &amp;
+</code></pre>
+
+<p>Something worthy of mention is that I'm using <code>icewmbg</code> instead of something like <code>feh</code> of <code>nitrogen</code> for wallpapers, since it comes with ICEWM anyways.</p>
+<h2>Dynamic Menu</h2>
+<p>For generating the dynamic menu I used <code>xdg-menu</code>, you can see more information about how to do it in the archwiki, it's quite simple: (https://wiki.archlinux.org/title/Xdg-menu#IceWM)[https://wiki.archlinux.org/title/Xdg-menu#IceWM].</p>
+<h2>Screenshot</h2>
+<p>This is how my setup is working so far, I'll upload more blogposts if I have more updates. </p>
+<p>:-)</p>
+<p><img alt="Screenshot" src="./files/screenshot.png" /></p>
+    <a href="/" role="button" class="secondary">Back to Home</a>
+</article>
+
+        <footer>
+            <small>&copy; 2025 Merazi's blog</small>
+        </footer>
+    </main>
+</body>
+</html>
