@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Switching to the ICEWM window manager | Merazi's blog</title>
+    <title>My Journey from XFCE4 to the IceWM Window Manager | Merazi's blog</title>
     <link rel="stylesheet" href="/code_highlight.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
 </head>
@@ -27,59 +27,63 @@
         </header>
         
 <article>
-    <p>I just wanted to write a quick blog on how I switched from XFCE4 to ICEWM.</p>
-<p>Quick disclaimer, I do not dislike XFCE4 or anything like that, I just wanted to try something else.</p>
-<p>I've used ICEWM in the past, however I never considered using it "seriously".</p>
-<p>I hopped into the arch wiki and checked what was needed to be up and running with ICEWM, first I installed the package icewm from the archlinux official repos.</p>
-<p>I also installed icewm-extra-themes from the AUR so I could get more theme options.</p>
-<p>Once those two packages were installed, I uninstalled the xfce4 group entirely, as well as lightdm using these commands:</p>
-<pre class="codehilite"><code class="language-sh">sudo pacman -Rncs xfce4
+    <p>I recently switched my desktop environment from XFCE4 to the IceWM window manager, and I wanted to share my experience. This isn't a critique of XFCE4; it's a fantastic and reliable environment. Instead, this is about my desire to explore a more lightweight and modular setup.</p>
+<p>I've experimented with IceWM before but never committed to it as my daily driver. This time, I decided to do a clean install and build my environment from the ground up.</p>
+<h3>The Fresh Start: Removing XFCE4</h3>
+<p>To ensure a clean slate, the first thing I did was completely remove the existing XFCE4 environment and the LightDM display manager.</p>
+<pre class="codehilite"><code class="language-sh"># Remove the entire xfce4 group and its dependencies
+sudo pacman -Rncs xfce4
+
+# Disable and stop the LightDM service
 systemctl disable lightdm
 systemctl stop lightdm
+
+# Remove the LightDM package
 sudo pacman -Rncs lightdm
 </code></pre>
 
-<p>After that I rebooted and made sure I installed the <code>xorg-xinit</code> so I could use startx.</p>
-<h2>ICEWM Session and startup apps</h2>
-<p>In order to have support for startup apps I did this in the <code>~/.xinitrc</code>:</p>
+<p>After a reboot, I was left with a minimal command-line interface, ready for the new setup. I also made sure I had <code>xorg-xinit</code> installed to be able to start a graphical session with the <code>startx</code> command.</p>
+<h3>Core Installation: Getting IceWM Running</h3>
+<p>With the old environment gone, it was time to install IceWM. I started with two packages.</p>
+<ol>
+<li><strong><code>icewm</code></strong>: The main window manager from the official Arch Linux repositories.</li>
+<li><strong><code>icewm-extra-themes</code></strong>: A collection of additional themes from the Arch User Repository (AUR) for more customization options.</li>
+</ol>
+<h3>Personalizing the Environment</h3>
+<p>With IceWM installed, the next step was to configure it to my liking.</p>
+<h4>Launching the Session</h4>
+<p>To automatically launch applications when IceWM starts, it's best to use <code>icewm-session</code>. I created a <code>~/.xinitrc</code> file with the following line to make this my default startup command:</p>
 <pre class="codehilite"><code class="language-sh">exec icewm-session
 </code></pre>
 
-<p>I'm doing icewm-session instead of just icewm so I can later use the startup script mentioned in their docs: (https://ice-wm.org/man/icewm-startup.html)[https://ice-wm.org/man/icewm-startup.html].</p>
-<p>Then in that startup file I have everything else, it's just a regular bash script:</p>
+<p>Using <code>icewm-session</code> allows IceWM to execute a startup script, which is perfect for launching background services and other applications. You can find more details in the <a href="https://ice-wm.org/man/icewm-startup.html">official documentation</a>.</p>
+<h4>The Startup Script</h4>
+<p>Following the documentation, I created a script at <code>~/.config/icewm/startup</code>. It's a simple shell script that launches everything I need for a complete desktop experience.</p>
 <pre class="codehilite"><code class="language-sh">#!/bin/bash
 
-# start network manager
-nm-applet &amp;
+# System tray applets
+nm-applet &amp;      # Network Manager
+blueman-applet &amp; # Bluetooth Manager
+pnmixer &amp;        # Sound Manager
 
-# start bluetooth manager
-blueman-applet &amp;
+# Services
+dunst &amp;          # Notification daemon
+xcompmgr &amp;       # Compositor for effects like transparency
+xpad &amp;           # Sticky notes
 
-# enable notifications
-dunst &amp;
+# Terminal and UI configuration
+xrdb -load ~/.Xresources # Load settings for xterm and other X apps
 
-# run conky system monitor
-sleep 1 &amp;&amp;
-        conky -c ~/.config/conky-date-widget &amp;
-
-# configuration for xter
-xrdb -load ~/.Xresources
-
-# set my wallpaper
+# System monitor and wallpaper
+sleep 1 &amp;&amp; conky -c ~/.config/conky-date-widget &amp;
 icewmbg --center=1 -i ~/Pictures/1071432.png
-
-# sticky notes support
-xpad &amp;
-
-# enable compositing
-xcompmgr &amp;
 </code></pre>
 
-<p>Something worthy of mention is that I'm using <code>icewmbg</code> instead of something like <code>feh</code> of <code>nitrogen</code> for wallpapers, since it comes with ICEWM anyways.</p>
-<h2>Dynamic Menu</h2>
-<p>For generating the dynamic menu I used <code>xdg-menu</code>, you can see more information about how to do it in the archwiki, it's quite simple: (https://wiki.archlinux.org/title/Xdg-menu#IceWM)[https://wiki.archlinux.org/title/Xdg-menu#IceWM].</p>
-<h2>Screenshot</h2>
-<p>This is how my setup is working so far, I'll upload more blogposts if I have more updates. </p>
+<p>I prefer using the built-in <code>icewmbg</code> utility for setting the wallpaper. It's lightweight and means I don't need to install other tools like <code>feh</code> or <code>nitrogen</code>.</p>
+<h3>Application Launcher: A Dynamic Menu</h3>
+<p>For a dynamic application menu that automatically updates, I used <code>xdg-menu</code>. The <a href="https://wiki.archlinux.org/title/Xdg-menu#IceWM">ArchWiki has a great guide</a> on how to set this up, and it was surprisingly straightforward.</p>
+<h3>Final Result</h3>
+<p>Here is a screenshot of my setup so far. I'm still tweaking things and exploring the possibilities, but I'm already enjoying the speed and simplicity of IceWM. I'll be sure to share any new discoveries in future posts!</p>
 <p>:-)</p>
 <p><img alt="Screenshot" src="./files/screenshot.png" /></p>
     <a href="/" role="button" class="secondary">Back to Home</a>

@@ -1,79 +1,85 @@
 ---
-title: Switching to the ICEWM window manager
+title: My Journey from XFCE4 to the IceWM Window Manager
 date: 2025-12-25
 ---
 
-I just wanted to write a quick blog on how I switched from XFCE4 to ICEWM.
+I recently switched my desktop environment from XFCE4 to the IceWM window manager, and I wanted to share my experience. This isn't a critique of XFCE4; it's a fantastic and reliable environment. Instead, this is about my desire to explore a more lightweight and modular setup.
 
-Quick disclaimer, I do not dislike XFCE4 or anything like that, I just wanted to try something else.
+I've experimented with IceWM before but never committed to it as my daily driver. This time, I decided to do a clean install and build my environment from the ground up.
 
-I've used ICEWM in the past, however I never considered using it "seriously".
+### The Fresh Start: Removing XFCE4
 
-I hopped into the arch wiki and checked what was needed to be up and running with ICEWM, first I installed the package icewm from the archlinux official repos.
-
-I also installed icewm-extra-themes from the AUR so I could get more theme options.
-
-Once those two packages were installed, I uninstalled the xfce4 group entirely, as well as lightdm using these commands:
+To ensure a clean slate, the first thing I did was completely remove the existing XFCE4 environment and the LightDM display manager.
 
 ```sh
+# Remove the entire xfce4 group and its dependencies
 sudo pacman -Rncs xfce4
+
+# Disable and stop the LightDM service
 systemctl disable lightdm
 systemctl stop lightdm
+
+# Remove the LightDM package
 sudo pacman -Rncs lightdm
 ```
 
-After that I rebooted and made sure I installed the `xorg-xinit` so I could use startx.
+After a reboot, I was left with a minimal command-line interface, ready for the new setup. I also made sure I had `xorg-xinit` installed to be able to start a graphical session with the `startx` command.
 
-## ICEWM Session and startup apps
+### Core Installation: Getting IceWM Running
 
-In order to have support for startup apps I did this in the `~/.xinitrc`:
+With the old environment gone, it was time to install IceWM. I started with two packages.
+
+1.  **`icewm`**: The main window manager from the official Arch Linux repositories.
+2.  **`icewm-extra-themes`**: A collection of additional themes from the Arch User Repository (AUR) for more customization options.
+
+### Personalizing the Environment
+
+With IceWM installed, the next step was to configure it to my liking.
+
+#### Launching the Session
+
+To automatically launch applications when IceWM starts, it's best to use `icewm-session`. I created a `~/.xinitrc` file with the following line to make this my default startup command:
 
 ```sh
 exec icewm-session
 ```
 
-I'm doing icewm-session instead of just icewm so I can later use the startup script mentioned in their docs: (https://ice-wm.org/man/icewm-startup.html)[https://ice-wm.org/man/icewm-startup.html].
+Using `icewm-session` allows IceWM to execute a startup script, which is perfect for launching background services and other applications. You can find more details in the [official documentation](https://ice-wm.org/man/icewm-startup.html).
 
-Then in that startup file I have everything else, it's just a regular bash script:
+#### The Startup Script
+
+Following the documentation, I created a script at `~/.config/icewm/startup`. It's a simple shell script that launches everything I need for a complete desktop experience.
 
 ```sh
 #!/bin/bash
 
-# start network manager
-nm-applet &
+# System tray applets
+nm-applet &      # Network Manager
+blueman-applet & # Bluetooth Manager
+pnmixer &        # Sound Manager
 
-# start bluetooth manager
-blueman-applet &
+# Services
+dunst &          # Notification daemon
+xcompmgr &       # Compositor for effects like transparency
+xpad &           # Sticky notes
 
-# enable notifications
-dunst &
+# Terminal and UI configuration
+xrdb -load ~/.Xresources # Load settings for xterm and other X apps
 
-# run conky system monitor
-sleep 1 &&
-        conky -c ~/.config/conky-date-widget &
-
-# configuration for xter
-xrdb -load ~/.Xresources
-
-# set my wallpaper
+# System monitor and wallpaper
+sleep 1 && conky -c ~/.config/conky-date-widget &
 icewmbg --center=1 -i ~/Pictures/1071432.png
-
-# sticky notes support
-xpad &
-
-# enable compositing
-xcompmgr &
 ```
 
-Something worthy of mention is that I'm using `icewmbg` instead of something like `feh` of `nitrogen` for wallpapers, since it comes with ICEWM anyways.
+I prefer using the built-in `icewmbg` utility for setting the wallpaper. It's lightweight and means I don't need to install other tools like `feh` or `nitrogen`.
 
-## Dynamic Menu
+### Application Launcher: A Dynamic Menu
 
-For generating the dynamic menu I used `xdg-menu`, you can see more information about how to do it in the archwiki, it's quite simple: (https://wiki.archlinux.org/title/Xdg-menu#IceWM)[https://wiki.archlinux.org/title/Xdg-menu#IceWM].
+For a dynamic application menu that automatically updates, I used `xdg-menu`. The [ArchWiki has a great guide](https://wiki.archlinux.org/title/Xdg-menu#IceWM) on how to set this up, and it was surprisingly straightforward.
 
-## Screenshot
+### Final Result
 
-This is how my setup is working so far, I'll upload more blogposts if I have more updates. 
+Here is a screenshot of my setup so far. I'm still tweaking things and exploring the possibilities, but I'm already enjoying the speed and simplicity of IceWM. I'll be sure to share any new discoveries in future posts!
 
 :-)
 
