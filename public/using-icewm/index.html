@@ -6,22 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My Journey from XFCE4 to the IceWM Window Manager | Merazi's blog</title>
     <link rel="stylesheet" href="/code_highlight.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+    <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
     <main class="container">
         <header>
             <hgroup>
-                <h1><a href="/" style="text-decoration: none; color: inherit;">Merazi's blog</a></h1>
+                <h1><a href="/" class="site-title">Merazi's blog</a></h1>
                 <p>My corner of the internet</p>
             </hgroup>
             <nav>
                 <ul>
                     <li><a href="/">Home</a></li>
-                    <li style="padding: 0 0.5rem; color: var(--pico-muted-color); border: none;" aria-hidden="true">|</li>
+                    <li class="separator" aria-hidden="true">|</li>
                     <li><a href="https://github.com/merazi" target="_blank">GitHub</a></li>
 <li><a href="https://bsky.app/profile/meraz1.bsky.social" target="_blank">BlueSky</a></li>
- 
+
                 </ul>
             </nav>
         </header>
@@ -31,16 +31,16 @@
 <p>I've experimented with IceWM before but never committed to it as my daily driver. This time, I decided to do a clean install and build my environment from the ground up.</p>
 <h3>The Fresh Start: Removing XFCE4</h3>
 <p>To ensure a clean slate, the first thing I did was completely remove the existing XFCE4 environment and the LightDM display manager.</p>
-<pre class="codehilite"><code class="language-sh"># Remove the entire xfce4 group and its dependencies
-sudo pacman -Rncs xfce4
+<div class="codehilite"><pre><span></span><code><span class="c1"># Remove the entire xfce4 group and its dependencies</span>
+sudo<span class="w"> </span>pacman<span class="w"> </span>-Rncs<span class="w"> </span>xfce4
 
-# Disable and stop the LightDM service
-systemctl disable lightdm
-systemctl stop lightdm
+<span class="c1"># Disable and stop the LightDM service</span>
+systemctl<span class="w"> </span>disable<span class="w"> </span>lightdm
+systemctl<span class="w"> </span>stop<span class="w"> </span>lightdm
 
-# Remove the LightDM package
-sudo pacman -Rncs lightdm
-</code></pre>
+<span class="c1"># Remove the LightDM package</span>
+sudo<span class="w"> </span>pacman<span class="w"> </span>-Rncs<span class="w"> </span>lightdm
+</code></pre></div>
 
 <p>After a reboot, I was left with a minimal command-line interface, ready for the new setup. I also made sure I had <code>xorg-xinit</code> installed to be able to start a graphical session with the <code>startx</code> command.</p>
 <h3>Core Installation: Getting IceWM Running</h3>
@@ -53,31 +53,31 @@ sudo pacman -Rncs lightdm
 <p>With IceWM installed, the next step was to configure it to my liking.</p>
 <h4>Launching the Session</h4>
 <p>To automatically launch applications when IceWM starts, it's best to use <code>icewm-session</code>. I created a <code>~/.xinitrc</code> file with the following line to make this my default startup command:</p>
-<pre class="codehilite"><code class="language-sh">exec icewm-session
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="nb">exec</span><span class="w"> </span>icewm-session
+</code></pre></div>
 
 <p>Using <code>icewm-session</code> allows IceWM to execute a startup script, which is perfect for launching background services and other applications. You can find more details in the <a href="https://ice-wm.org/man/icewm-startup.html">official documentation</a>.</p>
 <h4>The Startup Script</h4>
 <p>Following the documentation, I created a script at <code>~/.config/icewm/startup</code>. It's a simple shell script that launches everything I need for a complete desktop experience.</p>
-<pre class="codehilite"><code class="language-sh">#!/bin/bash
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
-# System tray applets
-nm-applet &amp;      # Network Manager
-blueman-applet &amp; # Bluetooth Manager
-pnmixer &amp;        # Sound Manager
+<span class="c1"># System tray applets</span>
+nm-applet<span class="w"> </span><span class="p">&amp;</span><span class="w">      </span><span class="c1"># Network Manager</span>
+blueman-applet<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="c1"># Bluetooth Manager</span>
+pnmixer<span class="w"> </span><span class="p">&amp;</span><span class="w">        </span><span class="c1"># Sound Manager</span>
 
-# Services
-dunst &amp;          # Notification daemon
-xcompmgr &amp;       # Compositor for effects like transparency
-xpad &amp;           # Sticky notes
+<span class="c1"># Services</span>
+dunst<span class="w"> </span><span class="p">&amp;</span><span class="w">          </span><span class="c1"># Notification daemon</span>
+xcompmgr<span class="w"> </span><span class="p">&amp;</span><span class="w">       </span><span class="c1"># Compositor for effects like transparency</span>
+xpad<span class="w"> </span><span class="p">&amp;</span><span class="w">           </span><span class="c1"># Sticky notes</span>
 
-# Terminal and UI configuration
-xrdb -load ~/.Xresources # Load settings for xterm and other X apps
+<span class="c1"># Terminal and UI configuration</span>
+xrdb<span class="w"> </span>-load<span class="w"> </span>~/.Xresources<span class="w"> </span><span class="c1"># Load settings for xterm and other X apps</span>
 
-# System monitor and wallpaper
-sleep 1 &amp;&amp; conky -c ~/.config/conky-date-widget &amp;
-icewmbg --center=1 -i ~/Pictures/1071432.png
-</code></pre>
+<span class="c1"># System monitor and wallpaper</span>
+sleep<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>conky<span class="w"> </span>-c<span class="w"> </span>~/.config/conky-date-widget<span class="w"> </span><span class="p">&amp;</span>
+icewmbg<span class="w"> </span>--center<span class="o">=</span><span class="m">1</span><span class="w"> </span>-i<span class="w"> </span>~/Pictures/1071432.png
+</code></pre></div>
 
 <p>I prefer using the built-in <code>icewmbg</code> utility for setting the wallpaper. It's lightweight and means I don't need to install other tools like <code>feh</code> or <code>nitrogen</code>.</p>
 <h3>Application Launcher: A Dynamic Menu</h3>
@@ -90,7 +90,7 @@ icewmbg --center=1 -i ~/Pictures/1071432.png
 </article>
 
         <footer>
-            <small>&copy; 2025 Merazi's blog</small>
+            <small>&copy; 2026 Merazi's blog</small>
         </footer>
     </main>
 </body>
