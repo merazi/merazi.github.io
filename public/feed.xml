@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+    <title>Merazi&#x27;s blog</title>
+    <link>https://merazi.github.io</link>
+    <description>Recent content.</description>
+    <lastBuildDate>Sat, 10 Jan 2026 04:18:29 GMT</lastBuildDate>
+    <generator>blogcraft</generator>
+    
+    <item>
+        <title>My Journey from XFCE4 to the IceWM Window Manager</title>
+        <link>https://merazi.github.io/posts/using-icewm/</link>
+        <guid>https://merazi.github.io/posts/using-icewm/</guid>
+        <pubDate>Thu, 25 Dec 2025 06:00:00 GMT</pubDate>
+        <description></description>
+    </item>
+    <item>
+        <title>New Name, Same Great Tool: PySite is Now BlogCraft!</title>
+        <link>https://merazi.github.io/posts/rebranding-pysite-to-blogcraft/</link>
+        <guid>https://merazi.github.io/posts/rebranding-pysite-to-blogcraft/</guid>
+        <pubDate>Sun, 21 Dec 2025 06:00:00 GMT</pubDate>
+        <description></description>
+    </item>
+    <item>
+        <title>PySite static website generator</title>
+        <link>https://merazi.github.io/posts/pySite/</link>
+        <guid>https://merazi.github.io/posts/pySite/</guid>
+        <pubDate>Sat, 20 Dec 2025 06:00:00 GMT</pubDate>
+        <description></description>
+    </item>
+</channel>
+</rss>
