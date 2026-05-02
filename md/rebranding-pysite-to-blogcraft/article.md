@@ -3,6 +3,8 @@ title: New Name, Same Great Tool: PySite is Now BlogCraft!
 date: 2025-12-21
 ---
 
+# Rebranding pySite to BlogCraft
+
 Hey everyone, exciting news!
 
 I'm thrilled to announce that **PySite**, my trusty static site generator, is getting a new name: **BlogCraft**.

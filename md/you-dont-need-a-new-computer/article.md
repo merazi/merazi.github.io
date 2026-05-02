@@ -3,7 +3,7 @@ title: You Don't Need A New Computer
 date: 2026-05-01 19:27:27
 ---
 
-## You don't need a new computer.
+# You don't need a new computer.
 
 Hey there! Hope you're having a nice day so far! Today I wanted to talk about how you don't really need a new computer; you may have guessed that from the title of the article, but I just wanted to point out the obvious.
 

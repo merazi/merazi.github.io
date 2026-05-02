@@ -3,6 +3,8 @@ title: My Journey from XFCE4 to the IceWM Window Manager
 date: 2025-12-25
 ---
 
+# Using IceWM
+
 I recently switched my desktop environment from XFCE4 to the IceWM window manager, and I wanted to share my experience. This isn't a critique of XFCE4; it's a fantastic and reliable environment. Instead, this is about my desire to explore a more lightweight and modular setup.
 
 I've experimented with IceWM before but never committed to it as my daily driver. This time, I decided to do a clean install and build my environment from the ground up.
