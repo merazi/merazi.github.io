@@ -1,0 +1,58 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PySite (Now BlogCraft) static website generator | Merazi's Blog</title>
+    <link rel="stylesheet" href="/code_highlight.css" />
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+    <main class="container">
+        <header>
+            <hgroup>
+                <h1><a href="/" class="site-title">Merazi's Blog</a></h1>
+                <p>My corner of the internet</p>
+            </hgroup>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li class="separator" aria-hidden="true">|</li>
+                    <li><a href="https://bsky.app/profile/meraz1.bsky.social" target="_blank">BlueSky</a></li>
+<li class="separator" aria-hidden="true">-</li>
+<li><a href="https://github.com/merazi" target="_blank">GitHub</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+<article>
+    <h1>I Built My Own Site Generator with Python</h1>
+<p>So, I did it again... I rebuilt my entire website.</p>
+<p>But this time feels different. Why? Because I built the static site generator myself, completely from scratch, using Python.</p>
+<p>Say hello to <strong>Pysite</strong>.</p>
+<p>I made it to be super simple and straightforward. No crazy dependencies, no complicated setup. Just the basics to get a blog or a simple site up and running fast.</p>
+<p>If you wanna check it out, you can grab it from my GitHub:
+<a href="https://github.com/merazi/blogcraft">https://github.com/merazi/blogcraft</a></p>
+<p>Getting your own site running is a piece of cake. Seriously, it's pretty much this:</p>
+<ol>
+<li>Create your <code>config.json</code> file to set things up.</li>
+<li>Pop open your terminal and create a new post:
+    <code>bash
+    pysite new new-post</code></li>
+<li>Build the site:
+    <code>bash
+    pysite build</code></li>
+<li>Profit. 😎</li>
+</ol>
+<p><strong>Pro-tip for hosting:</strong> If you're using something like GitHub Pages, just point it to the output directory. You can set this in your <code>config.json</code> with the <code>public_dir</code> option.</p>
+<p>That's it! Go have some fun with it. 🍎</p>
+    <a href="/" role="button" class="secondary">Back to Home</a>
+</article>
+
+        <footer>
+            <small>&copy; 2026 Merazi's Blog</small>
+        </footer>
+    </main>
+</body>
+</html>

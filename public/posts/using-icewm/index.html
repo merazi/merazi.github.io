@@ -1,0 +1,97 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Journey from XFCE4 to the IceWM Window Manager | Merazi's Blog</title>
+    <link rel="stylesheet" href="/code_highlight.css" />
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+    <main class="container">
+        <header>
+            <hgroup>
+                <h1><a href="/" class="site-title">Merazi's Blog</a></h1>
+                <p>My corner of the internet</p>
+            </hgroup>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li class="separator" aria-hidden="true">|</li>
+                    <li><a href="https://bsky.app/profile/meraz1.bsky.social" target="_blank">BlueSky</a></li>
+<li class="separator" aria-hidden="true">-</li>
+<li><a href="https://github.com/merazi" target="_blank">GitHub</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+<article>
+    <p>I recently switched my desktop environment from XFCE4 to the IceWM window manager, and I wanted to share my experience. This isn't a critique of XFCE4; it's a fantastic and reliable environment. Instead, this is about my desire to explore a more lightweight and modular setup.</p>
+<p>I've experimented with IceWM before but never committed to it as my daily driver. This time, I decided to do a clean install and build my environment from the ground up.</p>
+<h3>The Fresh Start: Removing XFCE4</h3>
+<p>To ensure a clean slate, the first thing I did was completely remove the existing XFCE4 environment and the LightDM display manager.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Remove the entire xfce4 group and its dependencies</span>
+sudo<span class="w"> </span>pacman<span class="w"> </span>-Rncs<span class="w"> </span>xfce4
+
+<span class="c1"># Disable and stop the LightDM service</span>
+systemctl<span class="w"> </span>disable<span class="w"> </span>lightdm
+systemctl<span class="w"> </span>stop<span class="w"> </span>lightdm
+
+<span class="c1"># Remove the LightDM package</span>
+sudo<span class="w"> </span>pacman<span class="w"> </span>-Rncs<span class="w"> </span>lightdm
+</code></pre></div>
+
+<p>After a reboot, I was left with a minimal command-line interface, ready for the new setup. I also made sure I had <code>xorg-xinit</code> installed to be able to start a graphical session with the <code>startx</code> command.</p>
+<h3>Core Installation: Getting IceWM Running</h3>
+<p>With the old environment gone, it was time to install IceWM. I started with two packages.</p>
+<ol>
+<li><strong><code>icewm</code></strong>: The main window manager from the official Arch Linux repositories.</li>
+<li><strong><code>icewm-extra-themes</code></strong>: A collection of additional themes from the Arch User Repository (AUR) for more customization options.</li>
+</ol>
+<h3>Personalizing the Environment</h3>
+<p>With IceWM installed, the next step was to configure it to my liking.</p>
+<h4>Launching the Session</h4>
+<p>To automatically launch applications when IceWM starts, it's best to use <code>icewm-session</code>. I created a <code>~/.xinitrc</code> file with the following line to make this my default startup command:</p>
+<div class="codehilite"><pre><span></span><code><span class="nb">exec</span><span class="w"> </span>icewm-session
+</code></pre></div>
+
+<p>Using <code>icewm-session</code> allows IceWM to execute a startup script, which is perfect for launching background services and other applications. You can find more details in the <a href="https://ice-wm.org/man/icewm-startup.html">official documentation</a>.</p>
+<h4>The Startup Script</h4>
+<p>Following the documentation, I created a script at <code>~/.config/icewm/startup</code>. It's a simple shell script that launches everything I need for a complete desktop experience.</p>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># System tray applets</span>
+nm-applet<span class="w"> </span><span class="p">&amp;</span><span class="w">      </span><span class="c1"># Network Manager</span>
+blueman-applet<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="c1"># Bluetooth Manager</span>
+pnmixer<span class="w"> </span><span class="p">&amp;</span><span class="w">        </span><span class="c1"># Sound Manager</span>
+
+<span class="c1"># Services</span>
+dunst<span class="w"> </span><span class="p">&amp;</span><span class="w">          </span><span class="c1"># Notification daemon</span>
+xcompmgr<span class="w"> </span><span class="p">&amp;</span><span class="w">       </span><span class="c1"># Compositor for effects like transparency</span>
+xpad<span class="w"> </span><span class="p">&amp;</span><span class="w">           </span><span class="c1"># Sticky notes</span>
+
+<span class="c1"># Terminal and UI configuration</span>
+xrdb<span class="w"> </span>-load<span class="w"> </span>~/.Xresources<span class="w"> </span><span class="c1"># Load settings for xterm and other X apps</span>
+
+<span class="c1"># System monitor and wallpaper</span>
+sleep<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>conky<span class="w"> </span>-c<span class="w"> </span>~/.config/conky-date-widget<span class="w"> </span><span class="p">&amp;</span>
+icewmbg<span class="w"> </span>--center<span class="o">=</span><span class="m">1</span><span class="w"> </span>-i<span class="w"> </span>~/Pictures/1071432.png
+</code></pre></div>
+
+<p>I prefer using the built-in <code>icewmbg</code> utility for setting the wallpaper. It's lightweight and means I don't need to install other tools like <code>feh</code> or <code>nitrogen</code>.</p>
+<h3>Application Launcher: A Dynamic Menu</h3>
+<p>For a dynamic application menu that automatically updates, I used <code>xdg-menu</code>. The <a href="https://wiki.archlinux.org/title/Xdg-menu#IceWM">ArchWiki has a great guide</a> on how to set this up, and it was surprisingly straightforward.</p>
+<h3>Final Result</h3>
+<p>Here is a screenshot of my setup so far. I'm still tweaking things and exploring the possibilities, but I'm already enjoying the speed and simplicity of IceWM. I'll be sure to share any new discoveries in future posts!</p>
+<p>:-)</p>
+<p><img alt="Screenshot" src="./files/screenshot.png" /></p>
+    <a href="/" role="button" class="secondary">Back to Home</a>
+</article>
+
+        <footer>
+            <small>&copy; 2026 Merazi's Blog</small>
+        </footer>
+    </main>
+</body>
+</html>
