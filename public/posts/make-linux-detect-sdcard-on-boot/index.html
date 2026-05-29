@@ -1,0 +1,70 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Make Linux Detect SD Card On Boot | Merazi's Blog</title>
+    <link rel="stylesheet" href="/code_highlight.css" />
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+    <main class="container">
+        <header>
+            <hgroup>
+                <h1><a href="/" class="site-title">Merazi's Blog</a></h1>
+                <p>My corner of the internet</p>
+            </hgroup>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li class="separator" aria-hidden="true">|</li>
+                    <li><a href="https://bsky.app/profile/meraz1.bsky.social" target="_blank">BlueSky</a></li>
+<li class="separator" aria-hidden="true">-</li>
+<li><a href="https://github.com/merazi" target="_blank">GitHub</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+<article>
+    <p>During my journey to get Arch Linux installed on an old Chromebook I had lying around, I stumbled upon an enormous brick wall: the limited storage of those devices.</p>
+<p>Of course, a Chromebook is designed so you depend on Google services for file storage, so everything you do in a Chromebook will be stored in the cloud, with the occasional download here and there. Therefore, they didn't see the need to include much storage in those devices.</p>
+<p>This is understandable for the regular user, but for me, it's unacceptable. I need more than 30GB for my files, packages, and such, so the limited space in the Chromebook was a problem when I decided to install Arch Linux on it.</p>
+<p>The solution? An SD card that would serve as expanded storage. I got a cheap SD card with an additional 32GB capacity, which meant I had 62GB of storage to play around with, which is way better than only 30GB!</p>
+<p><a title="Thomas Kurpjuweit Tom Knox, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Fake_Micro_SD_Card.tif"><img width="330" alt="Fake Micro SD Card" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Fake_Micro_SD_Card.tif/lossy-page1-330px-Fake_Micro_SD_Card.tif.jpg"></a></p>
+<p>It worked well for a while, until I became annoyed by having to disconnect and reconnect the SD card each time I wanted the laptop to detect it so I could mount it in my desktop environment. Every boot I had to do that over and over again, and it started to get old very quickly.</p>
+<p>It was then that I said, "There has to be another way," so I started investigating. I eventually found a very hacky solution, thanks to the good folks at Libera.Chat's #archlinux channel.</p>
+<p>The solution goes like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/bus/pci/devices/0000<span class="se">\:</span><span class="m">00</span><span class="se">\:</span>1b.0/remove
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/bus/pci/rescan
+</code></pre></div>
+
+<p>This script tells the computer to "reset" the SD card slot. The first line makes the system forget the slot exists for a moment, and the second line tells it to look for it again. This basically tricks Linux into thinking you just plugged the card in, forcing it to detect it automatically during boot.</p>
+<p><em>Note: The code <code>0000:00:1b.0</code> is like a "home address" for my specific SD card slot. Your computer might use a different address, which you can find by running the <code>lspci</code> command in a terminal.</em></p>
+<p>Then it was just a matter of copying those two commands into a script which I named <code>fix-sdcard</code>, moved it to <code>/usr/local/bin/</code>, and then I created a systemd service that could run it on boot so each time I booted, the SD card would be "reinserted."</p>
+<div class="codehilite"><pre><span></span><code><span class="k">[Unit]</span>
+<span class="na">Description</span><span class="o">=</span><span class="s">Fix SD Card Configuration Service</span>
+<span class="na">After</span><span class="o">=</span><span class="s">local-fs.target</span>
+
+<span class="k">[Service]</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">oneshot</span>
+<span class="na">ExecStart</span><span class="o">=</span><span class="s">/usr/local/bin/fix-sdcard</span>
+<span class="na">RemainAfterExit</span><span class="o">=</span><span class="s">yes</span>
+
+<span class="k">[Install]</span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
+</code></pre></div>
+
+<p>After all of that, I just configured my desktop environment's file manager (Thunar) to auto-mount the SD card on login using a simple <code>udisksctl</code> command.</p>
+<p>Now I have a less-limited device to do all my writing, mobile work, and similar stuff.</p>
+<p>Thanks for reading!</p>
+    <a href="/" role="button" class="secondary">Back to Home</a>
+</article>
+
+        <footer>
+            <small>&copy; 2026 Merazi's Blog</small>
+        </footer>
+    </main>
+</body>
+</html>

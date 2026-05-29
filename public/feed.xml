@@ -4,9 +4,16 @@
     <title>Merazi&#x27;s Blog</title>
     <link>https://merazi.github.io</link>
     <description>Recent content.</description>
-    <lastBuildDate>Sat, 02 May 2026 17:58:42 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 29 May 2026 22:59:02 GMT</lastBuildDate>
     <generator>blogcraft</generator>
     
+    <item>
+        <title>Make Linux Detect SD Card On Boot</title>
+        <link>https://merazi.github.io/posts/make-linux-detect-sdcard-on-boot/</link>
+        <guid>https://merazi.github.io/posts/make-linux-detect-sdcard-on-boot/</guid>
+        <pubDate>Fri, 29 May 2026 06:00:00 GMT</pubDate>
+        <description></description>
+    </item>
     <item>
         <title>The litepkg AUR Helper</title>
         <link>https://merazi.github.io/posts/the-litepkg-aur-helper/</link>
