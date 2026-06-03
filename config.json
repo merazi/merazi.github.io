@@ -9,7 +9,7 @@
     "assets_dir": "files",
     "default_editor": "vim",
     "socials": {
-    	"BlueSky": "https://bsky.app/profile/meraz1.bsky.social",
+    	"Mastodon": "https://mastodon.social/@ttydweller",
 	"GitHub": "https://github.com/merazi"
     }
 }
