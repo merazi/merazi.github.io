@@ -4,9 +4,16 @@
     <title>Merazi&#x27;s Blog</title>
     <link>https://merazi.github.io</link>
     <description>Recent content.</description>
-    <lastBuildDate>Wed, 03 Jun 2026 18:52:28 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 08 Jun 2026 01:24:28 GMT</lastBuildDate>
     <generator>blogcraft</generator>
     
+    <item>
+        <title>Extrepo in Debian</title>
+        <link>https://merazi.github.io/posts/extrepo-in-debian/</link>
+        <guid>https://merazi.github.io/posts/extrepo-in-debian/</guid>
+        <pubDate>Sun, 07 Jun 2026 06:00:00 GMT</pubDate>
+        <description></description>
+    </item>
     <item>
         <title>Make Linux Detect SD Card On Boot</title>
         <link>https://merazi.github.io/posts/make-linux-detect-sdcard-on-boot/</link>

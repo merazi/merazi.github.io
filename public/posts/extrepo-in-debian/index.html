@@ -1,0 +1,106 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Extrepo in Debian | Merazi's Blog</title>
+    <link rel="stylesheet" href="/code_highlight.css" />
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+    <main class="container">
+        <header>
+            <hgroup>
+                <h1><a href="/" class="site-title">Merazi's Blog</a></h1>
+                <p>My corner of the internet</p>
+            </hgroup>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li class="separator" aria-hidden="true">|</li>
+                    <li><a href="https://mastodon.social/@ttydweller" target="_blank">Mastodon</a></li>
+<li class="separator" aria-hidden="true">-</li>
+<li><a href="https://github.com/merazi" target="_blank">GitHub</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+<article>
+    <p>Hey there! <code>extrepo</code> is a handy tool for Debian users who want to add and manage third‑party APT repositories cleanly. It provides a consistent, Debian‑friendly way to discover, enable, disable, and update external repositories (e.g., third‑party projects that provide Debian packages such as LibreWolf, Steam, VirtualBox, etc.).</p>
+<p>If you want the authoritative reference, consult <code>man extrepo</code>, but here’s a concise, practical introduction.</p>
+<h2>Installation</h2>
+<p><code>extrepo</code> is available from Debian’s official package archive. You can check the package listing and available versions on Debian’s package search (search for "<code>extrepo</code>" on the packages site).</p>
+<p>Example install:</p>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>extrepo
+</code></pre></div>
+
+<h2>Basic usage</h2>
+<p>Common extrepo commands (from the tool’s help output) include:</p>
+<div class="codehilite"><pre><span></span><code>/usr/bin/extrepo<span class="w"> </span>search<span class="w">     </span><span class="c1"># search for repositories</span>
+/usr/bin/extrepo<span class="w"> </span>update<span class="w">     </span><span class="c1"># update a repository&#39;s metadata</span>
+/usr/bin/extrepo<span class="w"> </span>disable<span class="w">    </span><span class="c1"># disable an extrepo-configured repository</span>
+/usr/bin/extrepo<span class="w"> </span><span class="nb">enable</span><span class="w">     </span><span class="c1"># (re-)enable an extrepo repository</span>
+</code></pre></div>
+
+<p>Useful options:</p>
+<ul>
+<li><code>--url &lt;url&gt;</code>: define URL where to fetch extrepo data</li>
+<li><code>--offlinedata</code>: use offline data provided by the extrepo-offline-data package</li>
+<li><code>--mirror &lt;mirror&gt;</code>: use a specific mirror URL</li>
+</ul>
+<h2>Finding available repositories</h2>
+<p>To list all repository names <code>extrepo</code> knows about, this command works (it performs an empty search and extracts names from the output):</p>
+<div class="codehilite"><pre><span></span><code>extrepo<span class="w"> </span>search<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>^Found<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort
+</code></pre></div>
+
+<p>While it may not be the most elegant solution, it works; you can adapt it or parse extrepo's output programmatically if you prefer.</p>
+<h2>Examples of packages/repos</h2>
+<p>Projects that commonly provide repositories and that people add via <code>extrepo</code> include:
+- VirtualBox
+- Steam (Valve)
+- LibreWolf
+- Tor Browser</p>
+<p>Note: availability depends on the <code>extrepo</code> data feed and the package maintainers. If a project doesn’t appear, check that the upstream provides a Debian repository and that extrepo’s data source includes it.</p>
+<h2>Non‑free software</h2>
+<p><code>extrepo</code> supports enabling repositories that contain non‑DFSG‑free software, but Debian’s apt sources and APT policy still apply. To enable contrib/non‑free in extrepo’s default configuration, edit <code>/etc/extrepo/config.yaml</code> and enable those policies:</p>
+<div class="codehilite"><pre><span></span><code><span class="nn">---</span>
+<span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://extrepo-team.pages.debian.net/extrepo-data</span>
+<span class="nt">dist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debian</span>
+<span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trixie</span>
+<span class="c1"># To enable repositories that host software with non-DFSG-free licenses,</span>
+<span class="c1"># uncomment &quot;contrib&quot; and/or &quot;non-free&quot; in the list below.</span>
+<span class="nt">enabled_policies</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">contrib</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">non-free</span>
+</code></pre></div>
+
+<p>After enabling, you can enable relevant third‑party repos (for example, repos that offer NVIDIA drivers). Remember that enabling non‑free repositories may bring software that is not DFSG‑free and may have different support or licensing considerations.</p>
+<h2>Safety and best practices</h2>
+<ul>
+<li>Inspect the repository information before enabling it. Prefer repositories maintained by the upstream project or trusted maintainers.</li>
+<li>Use extrepo’s metadata (URLs and keys) rather than manually adding arbitrary APT lines from random web pages.</li>
+<li>After enabling a third‑party repo, review package signatures and the repository’s signing key.</li>
+<li>Read upstream docs for any post‑install steps (e.g., adding your user to groups like <code>vboxusers</code> or <code>kvm</code> for virtualbox or virt-manager respectively).</li>
+</ul>
+<h2>Further reading</h2>
+<ul>
+<li><code>man extrepo</code>: local manual (run <code>man extrepo</code>)</li>
+<li><a href="https://packages.debian.org/search?keywords=extrepo&amp;searchon=names&amp;suite=all&amp;section=all">extrepo package page</a></li>
+<li><a href="https://www.debian.org/social_contract#guidelines">Debian Social Contract &amp; DFSG</a></li>
+<li><a href="https://wiki.debian.org/DontBreakDebian/">Don't Break Debian</a></li>
+</ul>
+<h2>Final thoughts</h2>
+<p><code>extrepo</code> is a small but useful tool as it centralizes discovery and management of third‑party Debian repositories, encouraging more Debian‑compliant installs and reducing manual changes to your APT configuration. If you use third‑party repos often, it’s worth trying.</p>
+<p>Thanks for reading!</p>
+    <a href="/" role="button" class="secondary">Back to Home</a>
+</article>
+
+        <footer>
+            <small>&copy; 2026 Merazi's Blog</small>
+        </footer>
+    </main>
+</body>
+</html>
