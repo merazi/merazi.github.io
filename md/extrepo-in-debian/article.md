@@ -3,9 +3,13 @@ title: Extrepo in Debian
 date: 2026-06-07 18:37:01
 ---
 
-Hey there! `extrepo` is a handy tool for Debian users who want to add and manage third‑party APT repositories cleanly. It provides a consistent, Debian‑friendly way to discover, enable, disable, and update external repositories (e.g., third‑party projects that provide Debian packages such as LibreWolf, Steam, VirtualBox, etc.).
+Hey there!
 
-If you want the authoritative reference, consult `man extrepo`, but here’s a concise, practical introduction.
+Last week I was configuring a freshly installed Debian system, and I wanted to install Librewolf on it. When I went to their website I discovered an amazing tool for handling third party APT repositories for Debian in a very clean and easy way, and it turned out to be an officially supported tool that doesn't get enough recognition. That's why I decided to write this blog post.
+
+`extrepo` provides a consistent, Debian‑friendly way to discover, enable, disable, and update external repositories (think third‑party projects that provide Debian packages such as LibreWolf, Steam, VirtualBox, etc.).
+
+Of course, the best source of information for this package is the manpage, you can run `man extrepo` after installing the `extrepo` package in Debian or Debian based distributions, but I still wanted to talk about it myself.
 
 ## Installation
 
