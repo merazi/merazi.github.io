@@ -1,5 +1,5 @@
 ---
-title: New Name, Same Great Tool: PySite is Now BlogCraft!
+title: pySite is now BlogCraft
 date: 2025-12-21
 ---
 

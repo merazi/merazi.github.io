@@ -4,28 +4,28 @@
     <title>Merazi&#x27;s Blog</title>
     <link>https://merazi.github.io</link>
     <description>Recent content.</description>
-    <lastBuildDate>Tue, 09 Jun 2026 16:45:13 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 18 Jul 2026 18:51:31 GMT</lastBuildDate>
     <generator>blogcraft</generator>
     
     <item>
         <title>Extrepo in Debian</title>
         <link>https://merazi.github.io/posts/extrepo-in-debian/</link>
         <guid>https://merazi.github.io/posts/extrepo-in-debian/</guid>
-        <pubDate>Sun, 07 Jun 2026 06:00:00 GMT</pubDate>
+        <pubDate>Mon, 08 Jun 2026 00:37:01 GMT</pubDate>
         <description></description>
     </item>
     <item>
         <title>Make Linux Detect SD Card On Boot</title>
         <link>https://merazi.github.io/posts/make-linux-detect-sdcard-on-boot/</link>
         <guid>https://merazi.github.io/posts/make-linux-detect-sdcard-on-boot/</guid>
-        <pubDate>Fri, 29 May 2026 06:00:00 GMT</pubDate>
+        <pubDate>Fri, 29 May 2026 22:39:03 GMT</pubDate>
         <description></description>
     </item>
     <item>
         <title>You Don&#x27;t Need A New Computer</title>
         <link>https://merazi.github.io/posts/you-dont-need-a-new-computer/</link>
         <guid>https://merazi.github.io/posts/you-dont-need-a-new-computer/</guid>
-        <pubDate>Fri, 01 May 2026 06:00:00 GMT</pubDate>
+        <pubDate>Sat, 02 May 2026 01:27:27 GMT</pubDate>
         <description></description>
     </item>
     <item>
@@ -36,7 +36,7 @@
         <description></description>
     </item>
     <item>
-        <title>New Name, Same Great Tool: PySite is Now BlogCraft!</title>
+        <title>pySite is now BlogCraft</title>
         <link>https://merazi.github.io/posts/rebranding-pysite-to-blogcraft/</link>
         <guid>https://merazi.github.io/posts/rebranding-pysite-to-blogcraft/</guid>
         <pubDate>Sun, 21 Dec 2025 06:00:00 GMT</pubDate>
