@@ -31,6 +31,8 @@ This script tells the computer to "reset" the SD card slot. The first line makes
 
 Then it was just a matter of copying those two commands into a script which I named `fix-sdcard`, moved it to `/usr/local/bin/`, and then I created a systemd service that could run it on boot so each time I booted, the SD card would be "reinserted."
 
+This is what that file looks like:
+
 ```ini
 [Unit]
 Description=Fix SD Card Configuration Service
@@ -45,8 +47,19 @@ RemainAfterExit=yes
 WantedBy=multi-user.target
 ```
 
-After all of that, I just configured my desktop environment's file manager (Thunar) to auto-mount the SD card on login using a simple `udisksctl` command.
+I saved it as `/etc/systemd/system/fix-sdcard.service` and ran the following commands to let SystemD find the service and enable it so it runs on boot:
 
-Now I have a less-limited device to do all my writing, mobile work, and similar stuff.
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable --now fix-sdcard.service
+```
 
-Thanks for reading!
+After all of that, I just configured my desktop environment's file manager (Thunar) to auto-mount the SD card on login using a simple `udisksctl` command:
+
+```bash
+udisksctl mount --block-device /dev/disk/by-label/SDCARD
+```
+
+Now I have a less-limited device to do all my writing, work, and whatever I want!
+
+Thanks for reading :-)

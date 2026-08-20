@@ -19,10 +19,13 @@
                     <li><a href="/">Home</a></li>
                     <li class="separator" aria-hidden="true">|</li>
                     
-                    <li><a href="https://mastodon.social/@ttydweller" target="_blank">Mastodon</a></li>
+                    <li><a href="https://bsky.app/profile/meraz1.bsky.social" target="_blank">BlueSky</a></li>
                     <li class="separator" aria-hidden="true">-</li>
                     
                     <li><a href="https://github.com/merazi" target="_blank">GitHub</a></li>
+                    <li class="separator" aria-hidden="true">-</li>
+                    
+                    <li><a href="https://www.youtube.com/@M3R4Z1" target="_blank">YouTube</a></li>
                     
                     
                 </ul>
@@ -39,13 +42,14 @@
 <p>It was then that I said, "There has to be another way," so I started investigating. I eventually found a very hacky solution, thanks to the good folks at Libera.Chat's #archlinux channel.</p>
 <p>The solution goes like this:</p>
 <div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/bus/pci/devices/0000<span class="se">\:</span><span class="m">00</span><span class="se">\:</span>1b.0/remove
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/bus/pci/rescan
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"1"</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/bus/pci/devices/0000<span class="se">\:</span><span class="m">00</span><span class="se">\:</span>1b.0/remove
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"1"</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/bus/pci/rescan
 </code></pre></div>
 
 <p>This script tells the computer to "reset" the SD card slot. The first line makes the system forget the slot exists for a moment, and the second line tells it to look for it again. This basically tricks Linux into thinking you just plugged the card in, forcing it to detect it automatically during boot.</p>
 <p><em>Note: The code <code>0000:00:1b.0</code> is like a "home address" for my specific SD card slot. Your computer might use a different address, which you can find by running the <code>lspci</code> command in a terminal.</em></p>
 <p>Then it was just a matter of copying those two commands into a script which I named <code>fix-sdcard</code>, moved it to <code>/usr/local/bin/</code>, and then I created a systemd service that could run it on boot so each time I booted, the SD card would be "reinserted."</p>
+<p>This is what that file looks like:</p>
 <div class="codehilite"><pre><span></span><code><span class="k">[Unit]</span>
 <span class="na">Description</span><span class="o">=</span><span class="s">Fix SD Card Configuration Service</span>
 <span class="na">After</span><span class="o">=</span><span class="s">local-fs.target</span>
@@ -59,9 +63,17 @@
 <span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
 </code></pre></div>
 
-<p>After all of that, I just configured my desktop environment's file manager (Thunar) to auto-mount the SD card on login using a simple <code>udisksctl</code> command.</p>
-<p>Now I have a less-limited device to do all my writing, mobile work, and similar stuff.</p>
-<p>Thanks for reading!</p>
+<p>I saved it as <code>/etc/systemd/system/fix-sdcard.service</code> and ran the following commands to let SystemD find the service and enable it so it runs on boot:</p>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
+sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>fix-sdcard.service
+</code></pre></div>
+
+<p>After all of that, I just configured my desktop environment's file manager (Thunar) to auto-mount the SD card on login using a simple <code>udisksctl</code> command:</p>
+<div class="codehilite"><pre><span></span><code>udisksctl<span class="w"> </span>mount<span class="w"> </span>--block-device<span class="w"> </span>/dev/disk/by-label/SDCARD
+</code></pre></div>
+
+<p>Now I have a less-limited device to do all my writing, work, and whatever I want!</p>
+<p>Thanks for reading :-)</p>
     <a href="/" role="button" class="secondary">Back to Home</a>
 </article>
 
