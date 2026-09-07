@@ -1,16 +1,17 @@
 {
-    "site_title": "Merazi's Blog",
-    "site_url": "https://merazi.github.io/",
-    "site_subtitle": "My corner of the internet",
-    "rss": true,
-    "md_dir": "md",
-    "public_dir": "public",
-    "post_filename": "article.md",
-    "assets_dir": "files",
-    "default_editor": "nano",
-    "socials": {
-	"BlueSky": "https://bsky.app/profile/meraz1.bsky.social",
-	"GitHub": "https://github.com/merazi",
-	"YouTube": "https://www.youtube.com/@M3R4Z1"
-    }
+  "site_title": "Merazi's Blog",
+  "site_url": "https://merazi.github.io/",
+  "site_subtitle": "My corner of the internet",
+  "rss": true,
+  "md_dir": "md",
+  "public_dir": "public",
+  "post_filename": "article.md",
+  "assets_dir": "files",
+  "default_editor": "nano",
+  "socials": {
+    "BlueSky": "https://bsky.app/profile/meraz1.bsky.social",
+    "GitHub": "https://github.com/merazi",
+    "YouTube": "https://www.youtube.com/@M3R4Z1",
+    "Music Page": "https://merazi.github.io/music-page/"
+  }
 }
