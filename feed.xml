@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Merazi's webpage</title>
+        <link>https://merazi.github.io/</link>
+        <description>Posts from Merazi's webpage</description>
+        <language>en-us</language>
+        <atom:link href="https://merazi.github.io/feed.xml" rel="self" type="application/rss+xml" />
+
+        <item>
+            <title>New website again!</title>
+            <link>https://merazi.github.io/posts/0001-new-website-again.html</link>
+            <guid isPermaLink="true">https://merazi.github.io/posts/0001-new-website-again.html</guid>
+            <pubDate>Thu, 24 Sep 2026 04:36:34 GMT</pubDate>
+            <description>Well, here we are again. Another website, another attempt at pretending I have a proper online identity and a plan for it. This time, I built the whole thing by hand, without any external tools or fancy generators doing the heavy lifting for me. It feels a bit more personal that way, like I actually made something instead of dragging a template around and calling it a personality.</description>
+        </item>
+    </channel>
+</rss>

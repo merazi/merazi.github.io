@@ -1,0 +1,46 @@
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #111 !important;
+    color: #ccc !important;
+  }
+
+  a,
+  a:visited {
+    color: lightblue !important;
+  }
+}
+
+a,
+a:visited {
+  color: blue;
+}
+
+body {
+  margin: auto;
+  width: 80%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-banner {
+  display: flex;
+  justify-content: space-around;
+}
+
+.logo-picture {
+  display: flex;
+  align-items: center;
+}
+
+.footer-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+}
