@@ -1,46 +1,60 @@
 /* Dark mode styles */
 @media (prefers-color-scheme: dark) {
-  body {
-    background: #111 !important;
-    color: #ccc !important;
-  }
+    body {
+	background: #111 !important;
+	color: #ccc !important;
+    }
 
-  a,
-  a:visited {
-    color: lightblue !important;
-  }
+    a,
+    a:visited {
+	color: lightblue !important;
+    }
 }
 
 a,
 a:visited {
-  color: blue;
+    color: blue;
 }
 
 body {
-  margin: auto;
-  width: 80%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+    margin: auto;
+    width: 80%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.centered-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.image-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
 }
 
 .social-links {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .header-banner {
-  display: flex;
-  justify-content: space-around;
+    display: flex;
+    justify-content: space-around;
 }
 
 .logo-picture {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .footer-buttons {
-  display: flex;
-  justify-content: center;
-  margin-top: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
 }
