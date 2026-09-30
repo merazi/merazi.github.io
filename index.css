@@ -1,29 +1,13 @@
 .post-list {
-  width: 80%;
-  max-width: 600px; /* Prevents it from stretching too wide on desktop */
-  margin: 2rem auto 0 auto;
-  font-family: serif; /* Matches your header typography */
+      max-width: 600px;
+    margin: 2em auto 0;
 }
 
 .post-item {
-  margin: 8px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  border-bottom: 1px dotted #444; /* Retro subtle divider line */
-  padding-bottom: 4px;
+    margin: 8px 0;
+    border-bottom: 1px dotted #888;
+    padding-bottom: 4px;
+    color: #555;
 }
 
-.post-item a {
-  color: #8ab4f8; /* Soft readable link color */
-  text-decoration: underline; /* Classic HTML link style */
-}
-
-.post-item a:hover {
-  color: #ffffff;
-}
-
-/* Style for the date text */
-.post-item {
-  color: #aaaaaa;
-}
+.post-item a { margin-right: 0.5em; }
