@@ -20,30 +20,52 @@ a:hover { color: #a00; }
     border-bottom: 1px solid #888;
 }
 
+.header-links {
+    overflow: hidden;
+}
+
 .logo-picture img {
     width: 100px;
     height: auto;
 }
 
-.social-links a { display: block; }
+.logo-picture { float: left; }
+.social-links {
+    float: right;
+    max-width: 100%;
+    text-align: right;
+}
+.social-links a {
+    display: inline-block;
+    margin: 4px;
+    vertical-align: middle;
+}
+
+.music-link img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
 
 main { margin-top: 1.5em; }
 
-.post-header { border-bottom: 1px solid #aaa; }
-
-.centered-image,
-.inline-image {
+pre {
     max-width: 100%;
-    height: auto;
+    overflow: auto;
+    padding: 0.75em;
+    border: 1px solid #ccc;
+    background: #f5f5f5;
 }
 
-.centered-image {
+.post-image {
     display: block;
-    width: 100%;
+    max-width: 100%;
+    height: auto;
     margin: 1em auto;
 }
 
 .image-row a { display: inline-block; margin: 5px; }
+.image-row .post-image { display: inline; margin: 0; }
 
 .footer-buttons { margin: 2em 0; }
 .footer-buttons img { margin: 2px; }
