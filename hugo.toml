@@ -1,0 +1,117 @@
+baseURL = 'https://merazi.github.io/'
+languageCode = 'en-us'
+title = 'Merazi'
+theme = 'PaperMod'
+
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+
+[outputs]
+home = ['HTML', 'RSS', 'JSON']
+
+[pagination]
+pagerSize = 10
+
+[params]
+env = 'production'
+title = 'Merazi'
+description = "Notes on Linux, old hardware, digital minimalism, and productivity."
+author = 'Merazi'
+defaultTheme = 'auto' # dark / light / auto
+disableThemeToggle = false
+DateFormat = "Jan 2, 2006"
+
+# Visual & Minimalist Settings
+ShowReadingTime = true
+ShowShareButtons = false
+ShowPostNavLinks = true
+ShowBreadCrumbs = true
+ShowCodeCopyButtons = true
+ShowRssButtonInSectionTermList = true
+ShowToc = true
+TocOpen = false
+comments = true
+
+# Home Profile Mode
+[params.profileMode]
+enabled = true
+title = 'My little corner of the internet.'
+subtitle = 'Notes on Linux, old hardware, digital minimalism, and productivity.'
+imageUrl = 'logo.png'
+imageTitle = 'Merazi'
+imageWidth = 120
+imageHeight = 120
+
+[[params.profileMode.buttons]]
+name = 'Posts'
+url = '/posts/'
+
+[[params.profileMode.buttons]]
+name = 'Archive'
+url = '/archives/'
+
+[[params.profileMode.buttons]]
+name = 'Tags'
+url = '/tags/'
+
+[[params.profileMode.buttons]]
+name = 'Music'
+url = 'https://merazi.github.io/music-page/'
+
+# Social Icons
+[[params.socialIcons]]
+name = 'mastodon'
+url = 'https://mastodon.social/@ttydweller'
+
+[[params.socialIcons]]
+name = 'github'
+url = 'https://github.com/merazi'
+
+[[params.socialIcons]]
+name = 'rss'
+url = '/index.xml'
+
+# Navigation Menu
+[menu]
+
+[[menu.main]]
+identifier = 'posts'
+name = 'Posts'
+url = '/posts/'
+weight = 10
+
+[[menu.main]]
+identifier = 'archives'
+name = 'Archive'
+url = '/archives/'
+weight = 20
+
+[[menu.main]]
+identifier = 'tags'
+name = 'Tags'
+url = '/tags/'
+weight = 30
+
+[[menu.main]]
+identifier = 'search'
+name = 'Search'
+url = '/search/'
+weight = 40
+
+[[menu.main]]
+identifier = 'music'
+name = 'Music'
+url = 'https://merazi.github.io/music-page/'
+weight = 50
+
+# Fuse Search Configuration
+[params.fuseOpts]
+isCaseSensitive = false
+shouldSort = true
+location = 0
+distance = 1000
+threshold = 0.4
+minMatchCharLength = 0
+keys = ['title', 'permalink', 'summary', 'content']
