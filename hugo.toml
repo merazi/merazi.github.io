@@ -25,7 +25,7 @@ DateFormat = "Jan 2, 2006"
 
 # Visual & Minimalist Settings
 ShowReadingTime = true
-ShowShareButtons = false
+ShowShareButtons = true
 ShowPostNavLinks = true
 ShowBreadCrumbs = true
 ShowCodeCopyButtons = true
