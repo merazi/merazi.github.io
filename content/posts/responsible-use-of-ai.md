@@ -4,6 +4,7 @@ date: 2026-10-29
 draft: false
 tags: ["ai", "productivity"]
 description: "AI can be useful when people stay responsible for the work, use it to support human-made efforts, and keep their own ideas and creativity in the process."
+mastodon_url: "https://mastodon.social/@ttydweller/117525791547686382"
 ---
 
 AI is one of those subjects where it can feel like everyone expects you to pick a side. Either it is going to solve everything, or it is going to ruin everything. I do not really buy either extreme. I think AI can be useful, but how we use it matters a lot.
