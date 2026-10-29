@@ -1,0 +1,25 @@
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+<div class="post-meta">
+  {{ .Date.Format "Jan 2, 2006" }}
+  {{ with .Params.tags }}
+  &middot; Tags: {{ range $i, $t := . }}{{ if $i }}, {{ end }}<a href="{{ "tags/" | absURL }}{{ $t | urlize }}/">{{ $t }}</a>{{ end }}
+  {{ end }}
+  &middot; {{ .ReadingTime }} min read
+</div>
+
+{{ .Content }}
+
+{{ if .Params.mastodon_url }}
+<div class="mastodon-cta">
+  <p><b>Have thoughts or feedback?</b><br>
+  <a href="{{ .Params.mastodon_url }}">Join the discussion on Mastodon</a></p>
+</div>
+{{ end }}
+
+<div class="post-nav">
+  {{ with .PrevInSection }}&larr; <a href="{{ .Permalink }}">{{ .Title }}</a>{{ end }}
+  {{ if and .PrevInSection .NextInSection }} &middot; {{ end }}
+  {{ with .NextInSection }}<a href="{{ .Permalink }}">{{ .Title }}</a> &rarr;{{ end }}
+</div>
+{{ end }}

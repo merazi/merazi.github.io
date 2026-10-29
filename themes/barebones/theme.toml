@@ -1,0 +1,8 @@
+name = "Barebones"
+license = "MIT"
+licenselink = ""
+description = "A minimal Hugo theme with zero JavaScript, compatible with any browser."
+tags = ["minimal", "accessible", "lightweight"]
+
+[author]
+  name = "Merazi"

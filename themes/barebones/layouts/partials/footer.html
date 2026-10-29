@@ -1,0 +1,13 @@
+<div id="site-footer">
+  <p>Made with love &middot; With my hands</p>
+  <div class="footer-badges">
+    <img src="{{ "buttons/microhate.jpg" | relURL }}" alt="Microhate" width="88" height="31">
+    <img src="{{ "buttons/html_learn_it_today.gif" | relURL }}" alt="Learn HTML" width="88" height="31">
+    <img src="{{ "buttons/linux_powered.gif" | relURL }}" alt="Linux Powered" width="88" height="31">
+  </div>
+  <p>
+    {{ $icons := .Site.Params.socialIcons }}
+    {{ range $i, $icon := $icons }}{{ if $i }} &middot; {{ end }}<a href="{{ $icon.url }}">{{ $icon.name }}</a>{{ end }}
+  </p>
+  <p>&copy; {{ now.Year }} {{ .Site.Title }} &middot; Powered by <a href="https://gohugo.io">Hugo</a></p>
+</div>
