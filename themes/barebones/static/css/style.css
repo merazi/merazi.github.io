@@ -14,7 +14,6 @@ body {
 
 /* Links */
 a { color: #005a9c; }
-a:visited { color: #551a8b; }
 a:hover { color: #c00; }
 
 /* Headings */
@@ -166,7 +165,6 @@ hr {
 @media (prefers-color-scheme: dark) {
   body { background: #1a1a1a; color: #d4d4d4; }
   a { color: #6db3f2; }
-  a:visited { color: #b48ead; }
   a:hover { color: #ff6b6b; }
   #site-header { border-color: #444; }
   .tagline, .post-date, .post-meta, #site-footer { color: #999; }
