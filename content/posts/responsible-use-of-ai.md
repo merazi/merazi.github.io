@@ -22,6 +22,8 @@ That means reviewing the result, checking claims against trustworthy sources, an
 
 The same applies outside programming. A convenient answer is not automatically a correct one, and handing the result to someone else does not transfer your responsibility for it.
 
+Debian made a similar point in its [General Resolution on LLM usage](https://www.debian.org/vote/2026/vote_002). The winning option, "Responsible Use of Generative AI," does not ban or endorse the tools, but expects contributors to meet the same standards either way. They remain responsible for the quality and legality of what they submit, and should understand, review, and test AI-assisted work before including it. Blindly accepting generated material does not meet that bar. The vote applies to contributions to Debian, not everyone’s personal work, but I think the core idea holds more broadly: use the tools if they help, and make sure you can stand behind what you put your name on.
+
 ## Use it to revise human-made work
 
 I am more comfortable using AI to improve work that a person has already created. Grammar and spelling checks are a straightforward example: you write what you mean, then use a tool to catch mistakes or suggest clearer wording. You still decide which suggestions preserve your meaning and which do not.
