@@ -9,6 +9,10 @@ mastodon_url: "https://mastodon.social/@ttydweller/117340892948215980"
 
 Well, here we are again. Another website, another attempt at pretending I have a proper online identity and a plan for it. This time, I built the whole thing by hand, without any external tools or fancy generators doing the heavy lifting for me. It feels a bit more personal that way, like I actually made something instead of dragging a template around and calling it a personality.
 
+![Construction workers in Iran](https://upload.wikimedia.org/wikipedia/commons/1/10/Construction_workers_in_Iran-_Social_documentary-Photo_by_Mostafa_meraji_14.jpg)
+
+[Mostafameraji](https://commons.wikimedia.org/wiki/File:Construction_workers_in_Iran-_Social_documentary-Photo_by_Mostafa_meraji_14.jpg), CC0, via Wikimedia Commons
+
 So why do this again? Honestly, because I got bored. Also, I wanted to spend some time making something for myself and getting better at web design without falling into the usual trap of endlessly tweaking a setup and never actually publishing anything. There is something oddly satisfying about making a page from scratch and seeing it work on the first try, even if it is tiny and rough around the edges.
 
 I am not trying to turn this into some huge polished thing right away. I just want a place where I can write things down without needing to ask permission from a platform, a social network, or some algorithm that decides what deserves attention. A simple website feels nice for that. It is quiet, direct, and mine.

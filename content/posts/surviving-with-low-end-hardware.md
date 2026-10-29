@@ -9,6 +9,10 @@ mastodon_url: "https://mastodon.social/@ttydweller/117340895686830566"
 
 *This is a rant.*
 
+![xkcd comic about obsolete technology](https://imgs.xkcd.com/comics/obsolete_technology.png)
+
+[xkcd](https://xkcd.com/), licensed under [CC BY-NC 2.5](https://xkcd.com/license.html).
+
 Every few years, a new phone comes out with a better camera, a faster processor, and a slightly brighter screen. Laptops become thinner. TVs get bigger. Advertisements and social media make it feel as though our current devices are suddenly outdated the moment a new model appears.
 
 The message is subtle but constant: *You need the latest and greatest.*

@@ -9,6 +9,10 @@ mastodon_url: "https://mastodon.social/@ttydweller/117426101554893763"
 
 I recently ended up on Debian’s “Don’t Break Debian” page while looking for advice about installing software that isn’t available in the standard repositories. The page contains plenty of sensible warnings, including one about running `sudo make install` and hoping for the best.
 
+![Debian logo](https://upload.wikimedia.org/wikipedia/commons/c/cb/WP20Symbols_Debian.svg)
+
+[Turk ansiklopedici](https://commons.wikimedia.org/wiki/File:WP20Symbols_Debian.svg), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0), via Wikimedia Commons
+
 That was where I discovered `checkinstall`. Debian recommends it as a better option when you need to compile a program from source but still want your installation to behave like a package. That sounded useful, because blindly copying files into `/usr/local` and then trying to remember what went where is not exactly a long-term system administration strategy.
 
 ## Why is make install a problem?
