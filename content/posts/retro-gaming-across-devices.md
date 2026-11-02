@@ -4,6 +4,7 @@ date: 2026-11-01
 draft: false
 tags: ["gaming", "linux", "retro-gaming"]
 description: "How I use Nextcloud, FolderSync, and RetroArch to keep my retro games and progress in sync across two Linux laptops and my phone."
+mastodon_url: "https://mastodon.social/@ttydweller/117545165404915385"
 ---
 
 I like being able to pick up a game wherever I happen to be. The catch is that I don't always want to play on the same device: sometimes it's a laptop kind of evening, and sometimes my phone is the closest thing to a handheld console. Fortunately, I already have a solution for keeping my files in sync: Nextcloud.
