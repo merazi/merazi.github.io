@@ -1,5 +1,5 @@
 baseURL = 'https://merazi.github.io/'
-languageCode = 'en-us'
+locale = 'en-us'
 title = 'Merazi'
 theme = 'barebones'
 
@@ -15,6 +15,8 @@ home = ['HTML', 'RSS']
 pagerSize = 10
 
 [markup]
+[markup.goldmark.renderer]
+unsafe = true
 [markup.highlight]
 codeFences = true
 noClasses = false
