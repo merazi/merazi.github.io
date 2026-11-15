@@ -4,6 +4,7 @@ date: 2026-11-14
 draft: false
 tags: ["gaming", "linux", "retro-gaming", "hardware"]
 description: "Exploring DOS gaming on Linux: tweaking a few simple DOSBox settings, emulating a Pentium, and playing on a small Chromebook."
+mastodon_url: "https://mastodon.social/@ttydweller/117618553198361558"
 ---
 
 I didn't actually live through the MS-DOS era. In fact, I wasn't even born yet when people were manually juggling memory managers or booting games from 3.5-inch floppy disks.
