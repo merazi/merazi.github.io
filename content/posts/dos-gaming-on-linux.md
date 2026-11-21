@@ -3,7 +3,7 @@ title: "DOS gaming on Linux with DOSBox"
 date: 2026-11-14
 draft: false
 tags: ["gaming", "linux", "retro-gaming", "hardware"]
-description: "Exploring DOS gaming on Linux: tweaking a few simple DOSBox settings, emulating a Pentium, and playing on a small Chromebook."
+description: "Exploring DOS gaming on Linux: tweaking a few simple DOSBox settings, optimizing performance, and playing on a small Chromebook."
 mastodon_url: "https://mastodon.social/@ttydweller/117618553198361558"
 ---
 
@@ -49,43 +49,85 @@ sudo pacman -S dosbox
 
 When you launch DOSBox for the first time, it automatically creates a configuration file in your home directory inside `~/.dosbox/` (the exact filename usually includes the version number, like `dosbox-<version>.conf`).
 
-You don't have to touch 90% of the settings in that file. A couple of simple adjustments to visuals, processor speed, and startup commands are all you need.
+You don't have to keep all the default boilerplate and commented-out options in that file. Here is the configuration file I use (`~/.dosbox/dosbox-0.74-3.conf`):
+
+```ini
+[sdl]
+fullscreen=true
+fulldouble=false
+fullresolution=desktop
+windowresolution=1280x960
+output=opengl
+autolock=true
+sensitivity=100
+waitonerror=true
+priority=higher,pause
+usescancodes=true
+
+[dosbox]
+machine=svga_s3
+memsize=16
+
+[render]
+frameskip=0
+aspect=true
+scaler=normal2x
+
+[cpu]
+core=auto
+cputype=auto
+cycles=auto
+cycleup=500
+cycledown=20
+
+[mixer]
+nosound=false
+rate=44100
+blocksize=2048
+prebuffer=40
+
+[sblaster]
+sbtype=sb16
+sbbase=220
+irq=7
+dma=1
+hdma=5
+sbmixer=true
+oplmode=auto
+oplemu=fast
+oplrate=44100
+
+[autoexec]
+@echo off
+mount c ~/Nextcloud/DOSGAMES
+c:
+cls
+echo  ==========================================
+echo        WELCOME TO MERAZI'S DOS MACHINE
+echo  ==========================================
+echo.
+```
 
 ## The few settings I tweak
 
-After opening that configuration file in a text editor, here is what I change:
+While the configuration file above is ready to roll, here is a quick breakdown of what those key settings do:
 
 ### 1. Visual settings
 
 By default, DOSBox can make low-resolution games look a bit blurry or stretched on modern displays. Under `[sdl]` and `[render]`, I tweak these options:
 
-```ini
-[sdl]
-fullscreen=true
-output=opengl
-
-[render]
-scaler=normal2x
-```
-
 - **`output=opengl`**: Tells DOSBox to use OpenGL to draw the window, which runs smoothly on Linux graphics drivers without screen stutter.
 - **`fullscreen=true`**: Automatically launches the game in fullscreen mode so you don't have desktop distractions.
 - **`scaler=normal2x`**: Instead of blurring the image to fill the screen, this simply doubles the pixel size cleanly. It keeps the original pixel art sharp and crisp.
+- **`aspect=true`**: Preserves the original 4:3 aspect ratio so classic games don't look awkwardly stretched on widescreen displays.
 
-### 2. Emulating a Pentium processor
+### 2. CPU performance
 
-Some games from the mid-to-late 90s were designed for Pentium PCs and can feel sluggish if DOSBox defaults to emulating an older 386 or 486 chip. Under `[cpu]`, I set:
+Under `[cpu]`, configuring the processor settings properly ensures games run at their intended speed:
 
-```ini
-[cpu]
-core=dynamic
-cputype=pentium
-cycles=35000
-```
-
-- **`core=dynamic`**: Lets DOSBox run the emulated code much faster on modern processors.
-- **`cputype=pentium`**: Tells the game it's running on a Pentium processor.
-- **`cycles=35000`**: "Cycles" in DOSBox control how fast the virtual CPU runs. Setting a fixed value around 35,000 gives 90s games enough speed to run smoothly without making older games fly by unplayably fast (This happens a lot on strategy games like XCOM or Warcraft II).
+- **`core=auto` and `cputype=auto`**: Lets DOSBox automatically determine the best emulation core and CPU type for whatever game you are running.
+- **`cycles=auto`**: Automatically adjusts the emulated CPU cycles dynamically. This gives demanding mid-to-late 90s games enough speed to run smoothly without making older games fly by unplayably fast (which often happens on strategy games like *X-COM* or *Warcraft II*).
+- **`cycleup=500` and `cycledown=20`**: Sets the cycle step size when adjusting emulation speed manually using `Ctrl+F11` and `Ctrl+F12` if a game ever needs fine-tuning.
 
 ### 3. Startup commands (`[autoexec]`)
 
@@ -93,18 +135,13 @@ Every time you open DOSBox, you have to tell it where your game files are locate
 
 At the very bottom of the config file, there is an `[autoexec]` section that automatically runs whatever commands you put there whenever DOSBox starts:
 
-```ini
-[autoexec]
-mount C:~/Nextcloud/DOSGAMES
-C:
-cls
-```
+In my case, I'm using my Nextcloud folder to store my DOS games, so:
 
-In my case, I'm using my Nextcloud folder to store my DOS games, so with those three lines:
-
-1. DOSBox mounts my games folder as virtual drive `C:`.
-2. It switches directly into `C:`.
-3. It clears the screen (`cls`) so I'm greeted by a clean command prompt.
+1. `@echo off` keeps the startup output clean.
+2. DOSBox mounts my games folder as virtual drive `C:`.
+3. It switches directly into `C:`.
+4. It clears the screen (`cls`).
+5. It prints a personalized welcome banner right before greeting me with the prompt.
 
 ![DOSBox launched directly into a clean C prompt](</images/posts/dos-gaming-on-linux/dosbox-after-startup.png>)
 
